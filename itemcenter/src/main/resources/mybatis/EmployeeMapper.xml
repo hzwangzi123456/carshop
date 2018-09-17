@@ -8,19 +8,23 @@
         employee.name AS name,
         employee.username AS username,
         employee.password AS password,
-        employee.work_number AS workNumber,
+        employee.id AS id,
         employee.department AS department
+    </sql>
+
+    <sql id="table">
+        yasi.employee
     </sql>
 
     <!-- 所有输入列 -->
     <sql id="publicInCol">
         <!--         #{id},#{flag},#{title},#{thumb},#{content},#{slug},#{type},#{userId},#{isTop},#{ownerId},#{outerLink},#{categoryId},#{deletedAt},#{createdAt},#{updatedAt} -->
-        #{name,jdbcType=CHAR},#{username,jdbcType=CHAR},#{password,jdbcType=CHAR},#{workNumber,jdbcType=CHAR},#{department,jdbcType=CHAR}
+        #{name,jdbcType=CHAR},#{username,jdbcType=CHAR},#{password,jdbcType=CHAR},#{id,jdbcType=CHAR},#{department,jdbcType=CHAR}
     </sql>
 
     <sql id="publicInsertCol">
         <!-- 		id,flag,title,thumb,content,slug,type,user_id,is_top,owner_id,outer_link,category_id,deleted_at,created_at,updated_at -->
-        name,username,password,work_number,department
+        name,username,password,id,department
     </sql>
 
     <!-- 所有设值列 -->
@@ -35,8 +39,8 @@
             <if test="password != null">
                 password = #{password,jdbcType=CHAR},
             </if>
-            <if test="workNumber != null">
-                work_number = #{workNumber,jdbcType=CHAR},
+            <if test="id != null">
+                id = #{id,jdbcType=CHAR},
             </if>
             <if test="department != null">
                 department = #{department,jdbcType=CHAR},
@@ -46,7 +50,7 @@
 
     <!-- 主键条件 -->
     <sql id="publicWhereKey">
-        <!-- 		WHERE id = #{id}  -->
+      		WHERE id = #{id}
     </sql>
 
     <!-- 所有条件 -->
@@ -61,8 +65,8 @@
             <if test="password != null">
                 password = #{password,jdbcType=CHAR},
             </if>
-            <if test="workNumber != null">
-                work_number = #{workNumber,jdbcType=CHAR},
+            <if test="id != null">
+                id = #{id,jdbcType=CHAR},
             </if>
             <if test="department != null">
                 department = #{department,jdbcType=CHAR},
@@ -93,10 +97,14 @@
 
     <!-- *********************************查询********************************* -->
     <!-- 根据主键查询信息 -->
-    <!--     <select id="findSignTaskRecByKey" parameterType="SignTaskRecVO" resultType="SignTaskRecVO" > -->
-    <!-- 	    SELECT <include refid="publicOutCol"/>  FROM activity.sign_task_rec  -->
-    <!-- 	    <include refid="publicWhereKey"/>  -->
-    <!--     </select> -->
+    <select id="findEmployeeByKey" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee"
+            resultType="com.alibaba.edas.carshop.itemcenter.model.Employee">
+        SELECT
+        <include refid="publicOutCol"/>
+        FROM
+        <include refid="table"/>
+        <include refid="publicWhereKey"/>
+    </select>
 
     <!-- 获取记录数 -->
     <!--     <select id="findSignTaskRecCountByPojo"  parameterType="SignTaskRecVO" resultType="java.lang.Integer"> -->
@@ -104,42 +112,44 @@
     <!--     </select>  -->
 
     <!-- 对象条件查询 -->
-    <select id="findEmployeeByPojo" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee" resultType="com.alibaba.edas.carshop.itemcenter.model.Employee">
+    <select id="findEmployeeByPojo" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee"
+            resultType="com.alibaba.edas.carshop.itemcenter.model.Employee">
         SELECT
         <include refid="publicOutCol"/>
-        FROM yasi.employee
+        FROM
+        <include refid="table"/>
         <include refid="publicWhere"/>
     </select>
 
     <!-- vo条件查询-->
     <!--<resultMap id="ERResultMap" type="com.alibaba.edas.carshop.itemcenter.model.Employee">-->
-        <!--<result column="name" property="name"></result>-->
-        <!--<result column="username" property="username"></result>-->
-        <!--<result column="password" property="password"></result>-->
-        <!--<result column="work_number" property="workNumber"></result>-->
-        <!--<result column="department" property="department"></result>-->
-        <!--<collection property="recordList" ofType="com.yasi.vo.AttandenceRecord">-->
-            <!--<result column="o_work_number" property="workNumber"></result>-->
-            <!--<result column="date" property="date"></result>-->
-            <!--<result column="day" property="day"></result>-->
-            <!--<result column="time" property="time"></result>-->
-            <!--<result column="state" property="state"></result>-->
-        <!--</collection>-->
+    <!--<result column="name" property="name"></result>-->
+    <!--<result column="username" property="username"></result>-->
+    <!--<result column="password" property="password"></result>-->
+    <!--<result column="id" property="id"></result>-->
+    <!--<result column="department" property="department"></result>-->
+    <!--<collection property="recordList" ofType="com.yasi.vo.AttandenceRecord">-->
+    <!--<result column="o_id" property="id"></result>-->
+    <!--<result column="date" property="date"></result>-->
+    <!--<result column="day" property="day"></result>-->
+    <!--<result column="time" property="time"></result>-->
+    <!--<result column="state" property="state"></result>-->
+    <!--</collection>-->
     <!--</resultMap>-->
     <!--<select id="findEmployeeRecordByVo" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee" resultMap="ERResultMap">-->
-        <!--SELECT a.*,b.work_number o_work_number,b.date,b.day,b.time,state FROM yasi.employee a,yasi.attandence_record b-->
-        <!--<where>-->
-            <!--and a.work_number = b.work_number-->
-            <!--<if test="workNumber != null">-->
-                <!--and a.work_number = #{workNumber}-->
-            <!--</if>-->
-            <!--<if test="startTimeTIMESTAMP != null and startTimeTIMESTAMP != '' ">-->
-                <!--and b.date >= #{startTimeTIMESTAMP}-->
-            <!--</if>-->
-            <!--<if test="endTimeTIMESTAMP != null and endTimeTIMESTAMP != '' ">-->
-                <!--and #{endTimeTIMESTAMP} >= b.date-->
-            <!--</if>-->
-        <!--</where>-->
+    <!--SELECT a.*,b.id o_id,b.date,b.day,b.time,state FROM yasi.employee a,yasi.attandence_record b-->
+    <!--<where>-->
+    <!--and a.id = b.id-->
+    <!--<if test="id != null">-->
+    <!--and a.id = #{id}-->
+    <!--</if>-->
+    <!--<if test="startTimeTIMESTAMP != null and startTimeTIMESTAMP != '' ">-->
+    <!--and b.date >= #{startTimeTIMESTAMP}-->
+    <!--</if>-->
+    <!--<if test="endTimeTIMESTAMP != null and endTimeTIMESTAMP != '' ">-->
+    <!--and #{endTimeTIMESTAMP} >= b.date-->
+    <!--</if>-->
+    <!--</where>-->
     <!--</select>-->
     <!-- map条件查询 -->
     <!--     <select id="findSignTaskRecByWhere"  parameterType="java.util.Map" resultType="SignTaskRecVO"> -->

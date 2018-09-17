@@ -11,5 +11,7 @@ import java.util.List;
  */
 @Repository
 public interface EmployeeDao {
-    public List<Employee> findEmployeeByPojo(Employee po);
+    List<Employee> findEmployeeByPojo(Employee po);
+
+    Employee findEmployeeByKey(Employee po);
 }

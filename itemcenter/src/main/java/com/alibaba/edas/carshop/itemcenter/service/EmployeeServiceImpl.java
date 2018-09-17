@@ -21,4 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findEmployeeByPojo(Employee po) {
         return employeeDao.findEmployeeByPojo(po);
     }
+
+    @Override
+    public Employee findEmployeeByKey(Employee po) {
+        return employeeDao.findEmployeeByKey(po);
+    }
 }

@@ -51,4 +51,12 @@ public class EmployeeController {
             System.out.println(e);
         }
     }
+
+    @RequestMapping(value = "findEmployeeByKey")
+    public void findEmployeeByKey() {
+        Employee employee = new Employee();
+        employee.setId(2);
+        Employee employeeByKey = employeeService.findEmployeeByKey(employee);
+        System.out.println(employeeByKey);
+    }
 }

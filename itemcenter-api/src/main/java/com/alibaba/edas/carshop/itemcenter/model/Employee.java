@@ -24,7 +24,7 @@ public class Employee implements Serializable {
     /**
      * 河长工号
      */
-    private String workNumber;
+    private int id;
 
     /**
      * 河长所属部门
@@ -57,14 +57,6 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public String getWorkNumber() {
-        return workNumber;
-    }
-
-    public void setWorkNumber(String workNumber) {
-        this.workNumber = workNumber;
-    }
-
     public String getDepartment() {
         return department;
     }
@@ -73,36 +65,14 @@ public class Employee implements Serializable {
         this.department = department;
     }
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        Employee other = (Employee) that;
-        return (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getWorkNumber() == null ? other.getWorkNumber() == null : this.getWorkNumber().equals(other.getWorkNumber()))
-            && (this.getDepartment() == null ? other.getDepartment() == null : this.getDepartment().equals(other.getDepartment()));
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
-        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
-        result = prime * result + ((getWorkNumber() == null) ? 0 : getWorkNumber().hashCode());
-        result = prime * result + ((getDepartment() == null) ? 0 : getDepartment().hashCode());
-        return result;
+    public void setId(int id) {
+        this.id = id;
     }
+
 
     @Override
     public String toString() {
@@ -110,7 +80,7 @@ public class Employee implements Serializable {
                 "name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", workNumber='" + workNumber + '\'' +
+                ", id=" + id +
                 ", department='" + department + '\'' +
                 '}';
     }

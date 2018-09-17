@@ -26,5 +26,12 @@ public class testClass01 {
         }
     }
 
+    @Test
+    public void findEmployeeByKeyTest() {
+        Employee employee = new Employee();
+        employee.setId(2);
+        Employee employeeByKey = employeeServiceImpl.findEmployeeByKey(employee);
+        System.out.println(employeeByKey);
+    }
 
 }
