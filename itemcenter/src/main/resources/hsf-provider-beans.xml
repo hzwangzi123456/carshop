@@ -6,9 +6,20 @@
        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
        http://www.taobao.com/hsf
        http://www.taobao.com/hsf/hsf.xsd" default-autowire="byName">
-    <bean id="itemService" class="com.alibaba.edas.carshop.itemcenter.ItemServiceImpl" />
+    <bean id="itemService" class="com.alibaba.edas.carshop.itemcenter.service.ItemServiceImpl"/>
+    <bean id="userService" class="com.alibaba.edas.carshop.itemcenter.service.UserServiceImpl"/>
+    <bean id="employeeService" class="com.alibaba.edas.carshop.itemcenter.service.EmployeeServiceImpl"/>
+
     <!-- 提供一个服务示例 -->
-    <hsf:provider id="itemServiceProvider" interface="com.alibaba.edas.carshop.itemcenter.ItemService"
-        ref="itemService" version="1.0.0">
+    <hsf:provider id="itemServiceProvider" interface="com.alibaba.edas.carshop.itemcenter.service.ItemService"
+                  ref="itemService" version="1.0.0">
+    </hsf:provider>
+
+    <hsf:provider id="userServiceProvider" interface="com.alibaba.edas.carshop.itemcenter.service.UserService"
+                  ref="userService" version="1.0.0">
+    </hsf:provider>
+
+    <hsf:provider id="employeeServiceProvider" interface="com.alibaba.edas.carshop.itemcenter.service.EmployeeService"
+                  ref="employeeService" version="1.0.0">
     </hsf:provider>
 </beans>
