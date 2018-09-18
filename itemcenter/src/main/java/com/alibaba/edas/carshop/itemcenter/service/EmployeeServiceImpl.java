@@ -31,4 +31,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void insert(Employee po) {
         employeeDao.insert(po);
     }
+
+    @Override
+    public void delete(Employee po) {
+        employeeDao.delete(po);
+    }
 }

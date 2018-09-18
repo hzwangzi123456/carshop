@@ -45,4 +45,11 @@ public class testClass01 {
         employeeServiceImpl.insert(employee);
     }
 
+    @Test
+    public void deleteTest() {
+        Employee employee = new Employee();
+        employee.setId(1);
+        employeeServiceImpl.delete(employee);
+    }
+
 }

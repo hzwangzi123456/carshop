@@ -77,7 +77,9 @@
     <!-- *********************************添加********************************* -->
     <!-- 新增 -->
     <insert id="insert" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee">
-        INSERT INTO <include refid="table"/> (<include refid="publicInsertCol"/>)
+        INSERT INTO
+        <include refid="table"/>
+        (<include refid="publicInsertCol"/>)
         VALUES (<include refid="publicInCol"/>)
     </insert>
 
@@ -90,10 +92,11 @@
 
     <!-- *********************************删除********************************* -->
     <!-- 删除 -->
-    <!--     <delete id="delSignTaskRecByKey" parameterType="SignTaskRecVO" > -->
-    <!--         DELETE FROM activity.sign_task_rec  -->
-    <!-- 		<include refid="publicWhereKey"/>  -->
-    <!--     </delete> -->
+    <delete id="delete" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee">
+        DELETE FROM
+        <include refid="table"/>
+        <include refid="publicWhereKey"/>
+    </delete>
 
     <!-- *********************************查询********************************* -->
     <!-- 根据主键查询信息 -->

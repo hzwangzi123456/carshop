@@ -14,4 +14,6 @@ public interface EmployeeService {
     Employee findEmployeeByKey(Employee po);
 
     void insert(Employee po);
+
+    void delete(Employee po);
 }

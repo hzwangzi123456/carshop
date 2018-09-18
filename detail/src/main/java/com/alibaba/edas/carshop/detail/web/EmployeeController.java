@@ -6,6 +6,7 @@ import com.alibaba.edas.carshop.itemcenter.service.EmployeeService;
 import com.alibaba.edas.carshop.itemcenter.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -63,5 +64,10 @@ public class EmployeeController {
     @RequestMapping(value = "insert")
     public void insert(Employee employee) {
         employeeService.insert(employee);
+    }
+
+    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    public void delete(Employee employee) {
+        employeeService.delete(employee);
     }
 }
