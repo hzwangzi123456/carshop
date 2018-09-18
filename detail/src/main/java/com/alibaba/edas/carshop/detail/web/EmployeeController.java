@@ -59,4 +59,9 @@ public class EmployeeController {
         Employee employeeByKey = employeeService.findEmployeeByKey(employee);
         System.out.println(employeeByKey);
     }
+
+    @RequestMapping(value = "insert")
+    public void insert(Employee employee) {
+        employeeService.insert(employee);
+    }
 }

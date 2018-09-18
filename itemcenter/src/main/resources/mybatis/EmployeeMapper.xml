@@ -76,10 +76,10 @@
 
     <!-- *********************************添加********************************* -->
     <!-- 新增 -->
-    <!--	  <insert id="insertEmp" parameterType="EmpVO" >
-             INSERT INTO test2.emp (<include refid="publicInsertCol"/>)
-            VALUES (<include refid="publicInCol"/>)
-         </insert>  -->
+    <insert id="insert" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee">
+        INSERT INTO <include refid="table"/> (<include refid="publicInsertCol"/>)
+        VALUES (<include refid="publicInCol"/>)
+    </insert>
 
     <!-- *********************************修改********************************* -->
     <!-- 修改 -->

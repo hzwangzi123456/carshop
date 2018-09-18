@@ -14,4 +14,6 @@ public interface EmployeeDao {
     List<Employee> findEmployeeByPojo(Employee po);
 
     Employee findEmployeeByKey(Employee po);
+
+    void insert(Employee po);
 }

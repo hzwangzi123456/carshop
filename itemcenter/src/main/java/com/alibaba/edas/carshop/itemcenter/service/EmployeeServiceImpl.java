@@ -26,4 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findEmployeeByKey(Employee po) {
         return employeeDao.findEmployeeByKey(po);
     }
+
+    @Override
+    public void insert(Employee po) {
+        employeeDao.insert(po);
+    }
 }

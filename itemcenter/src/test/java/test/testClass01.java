@@ -16,7 +16,7 @@ import java.util.List;
 public class testClass01 {
 
     @Autowired
-    private EmployeeServiceImpl employeeServiceImpl;
+    private EmployeeService employeeServiceImpl;
 
     @Test
     public void test() {
@@ -32,6 +32,17 @@ public class testClass01 {
         employee.setId(2);
         Employee employeeByKey = employeeServiceImpl.findEmployeeByKey(employee);
         System.out.println(employeeByKey);
+    }
+
+    @Test
+    public void insertTest() {
+        Employee employee = new Employee();
+        employee.setId(3);
+        employee.setName("wz");
+        employee.setDepartment("数梦");
+        employee.setPassword("123");
+        employee.setUsername("hzwangzi");
+        employeeServiceImpl.insert(employee);
     }
 
 }
