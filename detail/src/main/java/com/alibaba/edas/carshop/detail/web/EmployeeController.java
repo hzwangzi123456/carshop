@@ -70,4 +70,9 @@ public class EmployeeController {
     public void delete(Employee employee) {
         employeeService.delete(employee);
     }
+
+    @RequestMapping(value = "update",method = RequestMethod.POST)
+    public void update(Employee employee) {
+        employeeService.update(employee);
+    }
 }

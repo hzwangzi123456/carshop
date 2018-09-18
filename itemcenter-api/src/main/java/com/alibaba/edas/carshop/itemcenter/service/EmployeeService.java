@@ -16,4 +16,6 @@ public interface EmployeeService {
     void insert(Employee po);
 
     void delete(Employee po);
+
+    void update(Employee po);
 }

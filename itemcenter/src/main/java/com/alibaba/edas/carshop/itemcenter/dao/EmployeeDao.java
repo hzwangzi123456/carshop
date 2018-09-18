@@ -18,4 +18,6 @@ public interface EmployeeDao {
     void insert(Employee po);
 
     void delete(Employee po);
+
+    void update(Employee po);
 }

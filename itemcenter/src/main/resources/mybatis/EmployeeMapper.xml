@@ -39,9 +39,6 @@
             <if test="password != null">
                 password = #{password,jdbcType=CHAR},
             </if>
-            <if test="id != null">
-                id = #{id,jdbcType=CHAR},
-            </if>
             <if test="department != null">
                 department = #{department,jdbcType=CHAR},
             </if>
@@ -85,10 +82,11 @@
 
     <!-- *********************************修改********************************* -->
     <!-- 修改 -->
-    <!--     <update id="updateSignTaskRec" parameterType="SignTaskRecVO" >  -->
-    <!--         UPDATE activity.sign_task_rec SET <include refid="publicSet"/>  -->
-    <!--         <include refid="publicWhereKey"/>   -->
-    <!--     </update>  -->
+    <update id="update" parameterType="com.alibaba.edas.carshop.itemcenter.model.Employee">
+        UPDATE <include refid="table"/>
+        <include refid="publicSet"/>
+        <include refid="publicWhereKey"/>
+    </update>
 
     <!-- *********************************删除********************************* -->
     <!-- 删除 -->

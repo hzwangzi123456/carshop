@@ -52,4 +52,13 @@ public class testClass01 {
         employeeServiceImpl.delete(employee);
     }
 
+    @Test
+    public void updateTest() {
+        Employee employee = new Employee();
+        employee.setId(2);
+        Employee employeeByKey = employeeServiceImpl.findEmployeeByKey(employee);
+        employeeByKey.setUsername("wzwzwzwz");
+        employeeByKey.setDepartment("hangzhou");
+        employeeServiceImpl.update(employeeByKey);
+    }
 }
